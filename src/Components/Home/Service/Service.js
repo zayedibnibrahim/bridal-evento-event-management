@@ -4,8 +4,9 @@ import { useState } from 'react/cjs/react.development';
 import ServiceCard from './ServiceCard';
 const Service = () => {
     const [services, setServices] = useState([])
+    console.log(services)
     useEffect(() => {
-        axios.get('http://localhost:4000/services')
+        axios.get('https://serene-gorge-64668.herokuapp.com/services')
             .then(result => {
                 setServices(result.data)
             })
