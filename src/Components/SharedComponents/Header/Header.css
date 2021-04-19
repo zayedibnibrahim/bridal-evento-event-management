@@ -1,0 +1,14 @@
+
+.userImg{
+    width: 45px;
+    border-radius: 50px;
+}
+.logout-btn{
+    color: tomato;
+    font-weight: 400;
+    cursor: pointer;
+}
+.brand-btn{
+    background-color: #ff24e2 !important;
+    color: #fff !important;
+  }

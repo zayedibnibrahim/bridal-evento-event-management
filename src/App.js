@@ -8,8 +8,9 @@ import Home from './Components/Home/Home';
 import Dashboard from './Components/Dashboard/Dashboard';
 import AddService from './Components/Dashboard/AddService/AddService';
 import ManageService from './Components/Dashboard/ManegeService/ManageService';
-import { createContext, useState } from 'react/cjs/react.development';
+import { createContext, useState } from 'react';
 import Login from './Components/Login/Login';
+import PrivateRoute from './Components/Login/PrivateRoute';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -20,15 +21,15 @@ function App() {
           <Route exact path='/'>
             <Home></Home>
           </Route>
-          <Route exact path='/dashboard'>
+          <PrivateRoute exact path='/dashboard'>
             <Dashboard></Dashboard>
-          </Route>
-          <Route exact path="/addService">
+          </PrivateRoute>
+          <PrivateRoute exact path="/addService">
             <AddService></AddService>
-          </Route>
-          <Route exact path="/manageService">
+          </PrivateRoute>
+          <PrivateRoute exact path="/manageService">
             <ManageService></ManageService>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login></Login>
           </Route>

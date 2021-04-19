@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { userContext } from '../../../App';
+import './Header.css'
+import jwt_decode from "jwt-decode";
 import logo from '../../../images/bridal-evento-logo.jpg'
+import firebase from "firebase/app";
 const Header = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
+    useEffect(() => {
+        const getSessionToken = sessionStorage.getItem('token');
+        if (getSessionToken) {
+            const decoded = jwt_decode(getSessionToken);
+            const { email, name, picture } = decoded;
+            const loggedInUserData = {
+                isSignedIn: true,
+                photo: picture,
+                email: email,
+                name: name
+            }
+            setLoggedInUser(loggedInUserData)
+        }
+
+    }, [setLoggedInUser])
+    const logoutHandler = () => {
+        firebase.auth().signOut()
+            .then(() => {
+                sessionStorage.removeItem('token')
+                setLoggedInUser({})
+            }).catch((error) => {
+                // An error happened.
+            });
+    }
     return (
         <section className="header-bg-transparent">
             <nav className="container navbar navbar-expand-lg navbar-light">
@@ -19,7 +48,10 @@ const Header = () => {
                                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
                             </li>
                         </ul>
-                        <Link to="/login" className="btn brand-btn">Login</Link>
+                        {
+                            loggedInUser.email ? <div><img className="userImg" src={loggedInUser.photo} alt="" /> <span onClick={logoutHandler} className="logout-btn">| Logout</span></div> : <Link className="btn brand-btn" to='/login'> Login
+                            </Link>
+                        }
                     </div>
                 </div>
             </nav>

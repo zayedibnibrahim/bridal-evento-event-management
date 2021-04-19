@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Login.css'
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import jwt_decode from "jwt-decode";
 import firebaseConfig from './firebaseConfig'
 import glBtn from '../../images/google-btn.png'
 import { useHistory, useLocation } from 'react-router';
@@ -31,11 +32,36 @@ const Login = () => {
                     name: displayName
                 }
                 setLoggedInUser(loggedInUserData)
+                getToken();
                 history.replace(from)
             }).catch(error => {
                 console.log(error)
             });
     }
+    //Token
+    const getToken = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+            .then(idToken => {
+                sessionStorage.setItem('token', idToken);
+            }).catch(error => {
+                console.log(error)
+            });
+    }
+    useEffect(() => {
+        const getSessionToken = sessionStorage.getItem('token');
+        if (getSessionToken) {
+            const decoded = jwt_decode(getSessionToken);
+            const { email, name, picture } = decoded;
+            const loggedInUserData = {
+                isSignedIn: true,
+                photo: picture,
+                email: email,
+                name: name
+            }
+            setLoggedInUser(loggedInUserData)
+        }
+
+    }, [setLoggedInUser])
     return (
         <div className="container">
             <div className="d-flex flex-column social-login-btn mt-5">

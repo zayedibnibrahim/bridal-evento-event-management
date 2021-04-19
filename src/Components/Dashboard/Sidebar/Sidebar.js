@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { userContext } from '../../../App';
 import logo from '../../../images/bridal-evento-logo.jpg'
+import firebase from "firebase/app";
 const Sidebar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(userContext);
+    const logoutHandler = () => {
+        firebase.auth().signOut()
+            .then(() => {
+                sessionStorage.removeItem('token')
+                setLoggedInUser({})
+            }).catch((error) => {
+                // An error happened.
+            });
+    }
     return (
         <section className="sidebar-section ps-5">
             <div className="logo-section">
@@ -17,6 +29,9 @@ const Sidebar = () => {
                     <li><Link>Booking List</Link></li>
                     <li><Link>Review</Link></li>
                 </ul>
+            </div>
+            <div className="logout">
+                <button onClick={logoutHandler} className="btn brand-btn">Logout</button>
             </div>
         </section>
     );
