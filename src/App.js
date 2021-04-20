@@ -11,6 +11,7 @@ import ManageService from './Components/Dashboard/ManegeService/ManageService';
 import { createContext, useState } from 'react';
 import Login from './Components/Login/Login';
 import PrivateRoute from './Components/Login/PrivateRoute';
+import Book from './Components/Dashboard/Book/Book';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -29,6 +30,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path="/manageService">
             <ManageService></ManageService>
+          </PrivateRoute>
+          <PrivateRoute exact path="/book">
+            <Book></Book>
           </PrivateRoute>
           <Route path="/login">
             <Login></Login>
