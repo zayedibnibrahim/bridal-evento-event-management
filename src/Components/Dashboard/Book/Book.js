@@ -32,7 +32,7 @@ const Book = () => {
     useEffect(() => {
         const getSessionServeId = sessionStorage.getItem('serveId')
         if (getSessionServeId) {
-            axios.post(`http://localhost:4000/services/${getSessionServeId}`)
+            axios.post(`https://serene-gorge-64668.herokuapp.com/services/${getSessionServeId}`)
                 .then(result => {
                     if (result.data) {
 
