@@ -41,7 +41,7 @@ const Book = () => {
     useEffect(() => {
         
         if (getSessionServeId) {
-            axios.post(`https://serene-gorge-64668.herokuapp.com/services/${getSessionServeId}`)
+            axios.post(`http://localhost:4000/services/${getSessionServeId}`)
                 .then(result => {
                     if (result.data) {
                         setServiceId(result.data[0])
@@ -77,7 +77,7 @@ const Book = () => {
     //send Order data to Database
     const paymentMethodSuccess = paymentId => {
         const orderData = { ...loggedInUser, serviceId: serviceId.title, personalDetail: shipmentData, date: eventDate, time: eventTime, paymentId, status: "pending" }
-        axios.post('https://serene-gorge-64668.herokuapp.com/paymentDone', orderData)
+        axios.post('http://localhost:4000/paymentDone', orderData)
             .then(result => {
                 if (result.data) {
                     history.push('/thankYou')

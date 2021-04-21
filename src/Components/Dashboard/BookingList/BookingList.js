@@ -26,7 +26,7 @@ const BookingList = () => {
 
     useEffect(() => {
 
-        axios.post(`https://serene-gorge-64668.herokuapp.com/allOrderByPerson/${loggedInUser.email}`, {
+        axios.get(`http://localhost:4000/allOrderByPerson/${loggedInUser.email}`, {
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem('token')}`,
                 'Content-Type': 'application/json'

@@ -7,7 +7,7 @@ const MakeAdmin = () => {
     const [success, setSuccess] = useState(null)
     const {reset, register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        axios.post('https://serene-gorge-64668.herokuapp.com/addAdmin', data)
+        axios.post('http://localhost:4000/addAdmin', data)
         .then(result => {
             if(result.data){
                 setSuccess('Admin Added Successfully')

@@ -23,7 +23,7 @@ const AddService = () => {
         formData.append('details', info.details)
         formData.append('price', info.price)
         formData.append('file', file)
-        axios.post('https://serene-gorge-64668.herokuapp.com/addService', formData)
+        axios.post('http://localhost:4000/addService', formData)
             .then(result => {
                 if (result) {
                     setMessage('Service Added SuccessFully')

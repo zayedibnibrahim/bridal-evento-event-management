@@ -11,6 +11,7 @@ const Review = () => {
     const [serviceId, setServiceId] = useState([])
     const [message, setMessage] = useState(null)
     const [ifOrdered, seIfOrdered] = useState([])
+    console.log(ifOrdered)
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
     //Load LoggedIn User Info From Session
@@ -32,7 +33,7 @@ const Review = () => {
     const getSessionServeId = sessionStorage.getItem('serveId')
     useEffect(() => {
         if (getSessionServeId) {
-            axios.post(`https://serene-gorge-64668.herokuapp.com/services/${getSessionServeId}`)
+            axios.post(`http://localhost:4000/services/${getSessionServeId}`)
                 .then(result => {
                     if (result.data) {
                         setServiceId(result.data[0])
@@ -43,7 +44,7 @@ const Review = () => {
 
     //check if purchased or not
     useEffect(() => {
-        axios.post(`https://serene-gorge-64668.herokuapp.com/allOrderByPerson/${loggedInUser.email}`, {
+        axios.get(`http://localhost:4000/allOrderByPerson/${loggedInUser.email}`, {
             headers: {
                 authorization: `Bearer ${sessionStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -58,7 +59,7 @@ const Review = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         const reviewData = { ...loggedInUser, serviceName: serviceId.title, review: data.review, rating: value }
-        axios.post('https://serene-gorge-64668.herokuapp.com/review', reviewData)
+        axios.post('http://localhost:4000/review', reviewData)
             .then(result => {
                 if (result.data) {
                     setMessage('Review Added');

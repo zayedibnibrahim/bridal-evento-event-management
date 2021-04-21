@@ -9,13 +9,13 @@ const ManageService = () => {
         loadData();
     }, [])
     const loadData = () => {
-        axios.get('https://serene-gorge-64668.herokuapp.com/services')
+        axios.get('http://localhost:4000/services')
             .then(result => {
                 setServices(result.data)
             })
     }
     const deleteHandler = serviceId => {
-        axios.delete(`https://serene-gorge-64668.herokuapp.com/deleteService/${serviceId}`)
+        axios.delete(`http://localhost:4000/deleteService/${serviceId}`)
         .then(result => {
             if(result.data){
                 loadData();

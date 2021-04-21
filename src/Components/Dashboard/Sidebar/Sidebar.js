@@ -42,13 +42,13 @@ const Sidebar = () => {
 
     //check If Admin
     useEffect(() => {
-        axios.post('https://serene-gorge-64668.herokuapp.com/isAdmin', {email})
+        axios.post('http://localhost:4000/isAdmin', {email})
         .then(res => {
             if(res.data === true){
                 setIsAdmin(true)
             }
         })
-    }, [])
+    }, [{email}])
     return (
         <section className="sidebar-section ps-5">
             <div className="logo-section">
