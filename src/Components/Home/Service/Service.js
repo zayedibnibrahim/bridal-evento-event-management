@@ -9,7 +9,7 @@ const Service = () => {
     //Fetch Services
     const [services, setServices] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:4000/services')
+        axios.get('https://serene-gorge-64668.herokuapp.com/services')
             .then(result => {
                 setServices(result.data)
             })

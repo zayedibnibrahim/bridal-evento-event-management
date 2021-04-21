@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 const AllOrder = () => {
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:4000/allOrder')
+        axios.get('https://serene-gorge-64668.herokuapp.com/allOrder')
             .then(result => {
                 setOrders(result.data)
             })

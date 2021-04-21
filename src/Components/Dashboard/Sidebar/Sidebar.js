@@ -42,7 +42,7 @@ const Sidebar = () => {
 
     //check If Admin
     useEffect(() => {
-        axios.post('http://localhost:4000/isAdmin', {email})
+        axios.post('https://serene-gorge-64668.herokuapp.com/isAdmin', {email})
         .then(res => {
             if(res.data === true){
                 setIsAdmin(true)
