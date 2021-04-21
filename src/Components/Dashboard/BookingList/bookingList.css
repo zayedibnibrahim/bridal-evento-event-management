@@ -1,0 +1,9 @@
+.booking-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+}
+.single-book-list{
+    height: 100px;
+    background-color: #6c5ce7;
+}

@@ -21,13 +21,13 @@ const Sidebar = () => {
             </div>
             <div className="dashboard-menu pt-5">
                 <ul className="list-unstyled">
-                    <li><Link>All Order</Link></li>
+                    <li><Link to="/allOrder">All Order</Link></li>
                     <li><Link to="/addService">Add Service</Link></li>
-                    <li><Link>Make Admin</Link></li>
+                    <li><Link to="/makeAdmin">Make Admin</Link></li>
                     <li><Link to="manageService">Manege Services</Link></li>
                     <li><Link to="/book">Book</Link></li>
-                    <li><Link>Booking List</Link></li>
-                    <li><Link>Review</Link></li>
+                    <li><Link to="/bookingList">Booking List</Link></li>
+                    <li><Link to="/review">Review</Link></li>
                 </ul>
             </div>
             <div className="logout">

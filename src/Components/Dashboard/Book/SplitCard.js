@@ -64,20 +64,20 @@ const SplitCard = ({paymentMethodSuccess}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div className="d-flex flex-column">
-                <label>
+                <label className="stripLabel">
                     Card number
                     <CardNumberElement options={options} />
                 </label>
-                <label>
+                <label className="stripLabel">
                     Expiration date
                     <CardExpiryElement options={options} />
                 </label>
-                <label>
+                <label className="stripLabel">
                     CVC
                     <CardCvcElement options={options} />
                 </label>
             </div>
-            <button type="submit" disabled={!stripe}>Pay</button>
+            <button className="stripeBtn" type="submit" disabled={!stripe}>Pay</button>
         </form>
     );
 };

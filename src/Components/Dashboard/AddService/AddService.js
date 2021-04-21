@@ -21,12 +21,12 @@ const AddService = () => {
         const formData = new FormData();
         formData.append('title', info.title)
         formData.append('details', info.details)
+        formData.append('price', info.price)
         formData.append('file', file)
-
         axios.post('https://serene-gorge-64668.herokuapp.com/addService', formData)
             .then(result => {
                 if (result) {
-                    setMessage('Service Add SuccessFully')
+                    setMessage('Service Added SuccessFully')
                     e.target.reset();
                 }
             })
@@ -35,15 +35,17 @@ const AddService = () => {
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-2 p-0">
                     <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-10 p-5">
+                <div className="col-md-10 p-5" style={{height: '100vh'}}>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group p-2">
                             <input onBlur={handleInput} className="form-control" type="text" name="title" placeholder="Title" />
                         </div>
-
+                        <div className="form-group p-2">
+                            <input onBlur={handleInput} className="form-control" type="number" name="price" placeholder="Service Charge(৳)" />
+                        </div>
                         <div className="form-group p-2">
                             <textarea onBlur={handleInput} className="form-control" name="details" placeholder="Details" rows="5"></textarea>
                         </div>
