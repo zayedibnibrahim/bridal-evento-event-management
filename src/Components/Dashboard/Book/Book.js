@@ -18,6 +18,8 @@ const Book = () => {
     const [shipmentData, setShipmentData] = useState([])
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
     const history = useHistory();
+    
+    //Load LoggedIn User Info From Session
     useEffect(() => {
         const getSessionToken = sessionStorage.getItem('token');
         if (getSessionToken) {
@@ -35,8 +37,9 @@ const Book = () => {
     }, [setLoggedInUser])
 
     //Load pointed Service at top
+    const getSessionServeId = sessionStorage.getItem('serveId')
     useEffect(() => {
-        const getSessionServeId = sessionStorage.getItem('serveId')
+        
         if (getSessionServeId) {
             axios.post(`https://serene-gorge-64668.herokuapp.com/services/${getSessionServeId}`)
                 .then(result => {
@@ -45,7 +48,7 @@ const Book = () => {
                     }
                 })
         }
-    }, [])
+    }, [getSessionServeId])
 
     //Handle Information Form
     const { register, handleSubmit, formState: { errors } } = useForm();

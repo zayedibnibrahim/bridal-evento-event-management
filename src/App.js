@@ -16,6 +16,7 @@ import ThankYouPage from './Components/Dashboard/Book/ThankYou';
 import MakeAdmin from './Components/Dashboard/MakeAdmin/MakeAdmin';
 import AllOrder from './Components/Dashboard/AllOrder/AllOrder';
 import BookingList from './Components/Dashboard/BookingList/BookingList';
+import Review from './Components/Dashboard/Review/Review';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -40,6 +41,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path="/manageService">
             <ManageService></ManageService>
+          </PrivateRoute>
+          <PrivateRoute exact path="/review">
+            <Review></Review>
           </PrivateRoute>
           <PrivateRoute exact path="/book">
             <Book></Book>
