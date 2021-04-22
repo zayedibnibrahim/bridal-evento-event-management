@@ -41,7 +41,7 @@ const Header = () => {
                 // An error happened.
             });
     }
-    
+
     //check If Admin
     useEffect(() => {
         axios.post('https://serene-gorge-64668.herokuapp.com/isAdmin', { email })
@@ -64,11 +64,6 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
-                            {
-                                isAdmin && <li className="nav-item">
-                                    <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                                </li>
-                            }
                             <li className="nav-item">
                                 <Link className="nav-link" to="/bookingList">View Orders</Link>
                             </li>
@@ -84,9 +79,14 @@ const Header = () => {
                             <li className="nav-item">
                                 <a className="nav-link" href="#contactus">Contact Us</a>
                             </li>
+                            {
+                                isAdmin && <li className="nav-item">
+                                    <Link className="nav-link spacial-menu" to="/dashboard">Dashboard</Link>
+                                </li>
+                            }
                         </ul>
                         {
-                            loggedInUser.email ? <div><img className="userImg" src={loggedInUser.photo} alt="" /> <span onClick={logoutHandler} className="logout-btn">| <FontAwesomeIcon icon={faSignOutAlt} /> Logout</span></div> : <Link className="btn brand-btn" to='/login'><FontAwesomeIcon icon={faSignInAlt}/> Login
+                            loggedInUser.email ? <div><img className="userImg" src={loggedInUser.photo} alt="" /> <span onClick={logoutHandler} className="logout-btn">| <FontAwesomeIcon icon={faSignOutAlt} /> Logout</span></div> : <Link className="btn brand-btn" to='/login'><FontAwesomeIcon icon={faSignInAlt} /> Login
                             </Link>
                         }
                     </div>

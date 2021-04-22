@@ -5,16 +5,35 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const AllOrder = () => {
     const [orders, setOrders] = useState([])
-    useEffect(() => {
+    const [updatedStatus, setUpdatedStatus] = useState(null)
+
+
+    const getId = (id, upValue) => {
+        if(upValue !== null){
+            axios.post('https://serene-gorge-64668.herokuapp.com/upStatus', {id, upValue})
+            .then(result => {
+                if(result.data){
+                    loadNew();
+                }
+            })
+        }
+        
+    }
+
+    const getStatus = (e) => {
+        setUpdatedStatus(e.target.value)
+    }
+
+    const loadNew = () => {
         axios.get('https://serene-gorge-64668.herokuapp.com/allOrder')
             .then(result => {
                 setOrders(result.data)
             })
+    }
+    useEffect(() => {
+        loadNew();
     }, [])
 
-    const handleStatus = (event) => {
-        console.log(event.target.value)
-    }
     return (
         <div className="container-fluid">
             <div className="row">
@@ -47,7 +66,7 @@ const AllOrder = () => {
                                         <td>{order.serviceId}</td>
                                         <td>{order.personalDetail.address}</td>
                                         <td>
-                                            <select value={order.status === 'pending' ? 'pending' : 'done'} onChange={handleStatus}>
+                                            <select value={order.status === 'pending' ? 'pending' : 'done'} name="status" onClick={() => getId(order._id, updatedStatus)} onChange={getStatus}>
                                                 <option value="pending">Pending</option>
                                                 <option value="done">Done</option>
                                             </select>

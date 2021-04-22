@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -5,8 +6,13 @@ const ContactUs = () => {
     const [success, setSuccess] = useState(null)
     const { reset, register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        setSuccess('Message Sent Successfully')
-        reset();
+        axios.post('https://serene-gorge-64668.herokuapp.com/email', data)
+            .then(result => {
+                if (result.data) {
+                    setSuccess('Message Sent Successfully')
+                    reset();
+                }
+            })
     }
     return (
         <section className="container pt-5 pb-5" id="contactus">
@@ -24,7 +30,7 @@ const ContactUs = () => {
                     {errors.phone && <span>This field is required</span>}
                     <textarea className="form-control mb-3" {...register("message", { required: true })} placeholder="Message" style={{ width: "93%" }} />
                     {errors.message && <span>This field is required</span>}
-                    <br/>
+                    <br />
                     <input className="btn brand-btn  mt-2" type="submit" />
                 </form>
                 {

@@ -41,6 +41,7 @@ const Dashboard = () => {
                 setOrders(result.data)
             })
     }, [])
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -67,6 +68,22 @@ const Dashboard = () => {
                             </div>
                             <div className="count-number col-md-2">
                                 <h4 className="text-white">{orders.length}</h4>
+                            </div>
+                        </div>
+                        <div className="row rounded shadow p-4" style={{ backgroundColor: "#d63031" }}>
+                            <div className="heading col-md-10">
+                                <h4 className="text-white">Total Pending: </h4>
+                            </div>
+                            <div className="count-number col-md-2">
+                                <h4 className="text-white">{orders.filter(order => order.status === 'pending').length}</h4>
+                            </div>
+                        </div>
+                        <div className="row rounded shadow p-4" style={{ backgroundColor: "#44bd32" }}>
+                            <div className="heading col-md-10">
+                                <h4 className="text-white">Total Completed: </h4>
+                            </div>
+                            <div className="count-number col-md-2">
+                                <h4 className="text-white">{orders.filter(order => order.status === 'done').length}</h4>
                             </div>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ import MakeAdmin from './Components/Dashboard/MakeAdmin/MakeAdmin';
 import AllOrder from './Components/Dashboard/AllOrder/AllOrder';
 import BookingList from './Components/Dashboard/BookingList/BookingList';
 import Review from './Components/Dashboard/Review/Review';
+import Email from './Components/Dashboard/Email/Email';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -47,6 +48,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path="/book">
             <Book></Book>
+          </PrivateRoute>
+          <PrivateRoute exact path="/customersMail">
+            <Email></Email>
           </PrivateRoute>
           <Route path="/login">
             <Login></Login>

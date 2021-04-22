@@ -52,3 +52,8 @@ body, h1, h2, h3, h4, h5, h6, p, a{
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px
 }
+
+.navbar-nav .spacial-menu{
+  color: #fed330 !important;
+  text-decoration: underline;
+}

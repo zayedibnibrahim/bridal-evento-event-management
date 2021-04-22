@@ -6,7 +6,7 @@ import firebase from "firebase/app";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTachometerAlt, faAtlas, faFolderPlus, faUserPlus, faCogs, faShoppingCart, faList, faStar, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTachometerAlt, faAtlas, faFolderPlus, faUserPlus, faCogs, faShoppingCart, faList, faStar, faChevronLeft, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = () => {
     const history = useHistory();
@@ -65,6 +65,7 @@ const Sidebar = () => {
                         <li><Link to="/addService"><FontAwesomeIcon icon={faFolderPlus} /> Add Service</Link></li>
                         <li><Link to="/makeAdmin"><FontAwesomeIcon icon={faUserPlus} /> Add Admin</Link></li>
                         <li><Link to="/manageService"><FontAwesomeIcon icon={faCogs} /> Manege Services</Link></li>
+                        <li><Link to="/customersMail"><FontAwesomeIcon icon={faEnvelope} /> Customers Email</Link></li>
                         
                         </>
                     }
