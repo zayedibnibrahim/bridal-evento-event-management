@@ -1,3 +1,4 @@
+import { CircularProgress } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
@@ -21,6 +22,7 @@ const AllOrder = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 pt-5 pb-5" style={{ height: '100vh' }}>
+                    <h3>All Order :</h3>
                     <table className="table">
                         <thead className="table-dark">
                             <tr>
@@ -33,6 +35,9 @@ const AllOrder = () => {
                             </tr>
                         </thead>
                         <tbody>
+                            {
+                                orders.length === 0 && <CircularProgress color="secondary" />
+                            }
                             {
                                 orders.map((order, index) =>
                                     <tr key={order._id}>

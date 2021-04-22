@@ -39,6 +39,7 @@ const AddService = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10 p-5" style={{height: '100vh'}}>
+                <h3>Add Service :</h3>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group p-2">
                             <input onBlur={handleInput} className="form-control" type="text" name="title" placeholder="Title" />

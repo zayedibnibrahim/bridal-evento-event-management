@@ -1,3 +1,4 @@
+import { CircularProgress } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
@@ -16,16 +17,18 @@ const Service = () => {
     }, [])
 
     //book click Event
-
     const getService = serviceId => {
         sessionStorage.setItem('serveId', serviceId)
         history.push('/book')
     }
     return (
-        <section className="container">
+        <section className="container" id="services">
             <h1 className="brand-text text-center">Checkout Out Awesome Service</h1>
             <p className="brand-text text-center">ou’ve worked very hard planning for your “Big Day”. You almost want everything to go flawless. There will be so much happening that day. The last thing you should worry about if everything is being documented properly. That’s why we recommend you full day coverage package – one less thing for you to worry about. We will be with you from the very beginning of your day till the end. That means, you just enjoy to the fullest and look fabulous.</p>
-            <div className="col-md-8 m-auto">
+            <div className="col-md-8 m-auto p-2">
+                {
+                    services.length === 0 && <CircularProgress color="secondary" />
+                }
                 {
                     services.map(service => <ServiceCard key={service._id} service={service} getService={getService}></ServiceCard>)
                 }

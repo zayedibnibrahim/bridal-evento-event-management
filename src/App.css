@@ -47,3 +47,8 @@ body, h1, h2, h3, h4, h5, h6, p, a{
 .service-card:nth-child(even) .card-info{
   text-align: end;
 }
+.summery{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px
+}
