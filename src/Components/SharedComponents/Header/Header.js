@@ -86,7 +86,7 @@ const Header = () => {
                             </li>
                         </ul>
                         {
-                            loggedInUser.email ? <div><img className="userImg" src={loggedInUser.photo} alt="" /> <span onClick={logoutHandler} className="logout-btn">| <FontAwesomeIcon icon={faSignOutAlt} /> Logout</span></div> : <Link className="btn brand-btn" to='/login'><FontAwesomeIcon icon={faSignInAlt} /> Login
+                            loggedInUser.email ? <div><img className="userImg" src={loggedInUser.photo} alt="" /> <span onClick={logoutHandler} className="logout-btn">| <FontAwesomeIcon icon={faSignOutAlt} /> Logout</span></div> : <Link className="btn brand-btn" to='/login'><FontAwesomeIcon icon={faSignInAlt}/> Login
                             </Link>
                         }
                     </div>
